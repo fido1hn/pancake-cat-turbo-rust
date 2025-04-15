@@ -2,7 +2,6 @@
 // The stuff in this block will run ~60x per sec
 turbo::go!({
     let mut state = GameState::load();
-    text!("Game state loaded");
 
     // Game play for player
     if gamepad(0).left.pressed() {
@@ -45,6 +44,18 @@ turbo::go!({
             false
         }
     });
+
+    // Draw animated background
+    clear(0x00ffffff);
+    let frame = (state.frame as i32) / 2;
+    for col in 0..9 {
+        for row in 0..6 {
+            let x = ((col * 32 + frame) % (272 + 16)) - 32;
+            let y = ((row * 32 + frame) % (144 + 16)) - 24;
+            sprite!("heart", x = x, y = y);
+        }
+    }
+    state.frame += 1;
 
     state.save();
 });
