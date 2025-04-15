@@ -91,6 +91,9 @@ turbo::go!({
         );
     }
 
+    // Display the score in the top left corner
+    text!("Score: {}", state.score; x=10, y=10, font="large", color=0xffffffff);
+
     state.save();
 });
 
