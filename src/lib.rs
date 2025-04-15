@@ -14,6 +14,16 @@ turbo::go!({
     }
 
     // randomly spawned pancake
+    if rand() % 64 == 0 {
+        let pancake = Pankcake {
+            x: (rand() % 256) as f32,
+            y: 0.0,
+            vel: (rand() % 3 + 1) as f32,
+            radius: (rand() % 10 + 5) as f32,
+        };
+
+        state.pancakes.push(pancake);
+    }
 
     state.save();
 });
