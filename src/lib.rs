@@ -64,6 +64,18 @@ turbo::go!({
         y = state.cat_y - 16.0,
     );
 
+    // Draw the pancake
+    for p in &state.pancakes {
+        circ!(
+            x = p.x,
+            y = p.y + 1.0,
+            d = p.radius + 2.,
+            color = 0x000000aa
+        );
+        circ!(x = p.x, y = p.y, d = p.radius + 1., color = 0xf4d29cff);
+        circ!(x = p.x, y = p.y, d = p.radius, color = 0xdba463ff);
+    }
+
     state.save();
 });
 
