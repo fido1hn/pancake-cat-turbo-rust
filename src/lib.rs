@@ -57,6 +57,13 @@ turbo::go!({
     }
     state.frame += 1;
 
+    // Draw the cat
+    sprite!(
+        "munch_cat",
+        x = state.cat_x - state.cat_r,
+        y = state.cat_y - 16.0,
+    );
+
     state.save();
 });
 
