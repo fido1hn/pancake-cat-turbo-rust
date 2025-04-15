@@ -76,6 +76,21 @@ turbo::go!({
         circ!(x = p.x, y = p.y, d = p.radius, color = 0xdba463ff);
     }
 
+    // Display munch when cat eats pancake
+    if state.frame >= 64 && state.frame.saturating_sub(state.last_munch_at) <= 60 {
+        rect!(w = 30, h = 10, x = state.cat_x + 32.0, y = state.cat_y);
+        circ!(d = 10, x = state.cat_x + 28.0, y = state.cat_y);
+        rect!(w = 10, h = 5, x = state.cat_x + 28.0, y = state.cat_y + 5.0);
+        circ!(d = 10, x = state.cat_x + 56.0, y = state.cat_y);
+        text!(
+            "MUNCH!",
+            x = state.cat_x + 33.0,
+            y = state.cat_y + 3.0,
+            font = "small",
+            color = 0x000000ff
+        );
+    }
+
     state.save();
 });
 
