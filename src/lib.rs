@@ -1,3 +1,28 @@
+turbo::init! {
+    struct GameState {
+        frame: u32,
+        last_munch_at: u32,
+        cat_x: f32,
+        cat_y: f32,
+        cat_r: f32,
+        pancakes: Vec<struct Pankcake {
+            x: f32,
+            y: f32,
+            vel: f32,
+            radius:f32,
+        }>,
+        score: u32,
+    } = Self {
+        frame: 0,
+        last_munch_at: 0,
+        cat_x: 128.0,
+        cat_y: 112.0,
+        cat_r:8.0,
+        pancakes: vec![],
+        score: 0,
+    }
+}
+
 // This is where your main game loop code goes
 // The stuff in this block will run ~60x per sec
 turbo::go!({
@@ -96,28 +121,3 @@ turbo::go!({
 
     state.save();
 });
-
-turbo::init! {
-    struct GameState {
-        frame: u32,
-        last_munch_at: u32,
-        cat_x: f32,
-        cat_y: f32,
-        cat_r: f32,
-        pancakes: Vec<struct Pankcake {
-            x: f32,
-            y: f32,
-            vel: f32,
-            radius:f32,
-        }>,
-        score: u32,
-    } = Self {
-        frame: 0,
-        last_munch_at: 0,
-        cat_x: 128.0,
-        cat_y: 112.0,
-        cat_r:8.0,
-        pancakes: vec![],
-        score: 0
-    }
-}
